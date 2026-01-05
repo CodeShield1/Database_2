@@ -8,14 +8,6 @@ CREATE TABLE rayons (
     id_rayon INT AUTO_INCREMENT PRIMARY KEY,
     nom VARCHAR(255) NOT NULL   
 );
-INSERT INTO rayons (nom) VALUES
-('Informatique'),
-('Mathématiques'),
-('Sciences'),
-('Littérature'),
-('Histoire'),
-('Économie'),
-('Philosophie');
 
 
 
@@ -29,14 +21,7 @@ CREATE TABLE ouvrages (
     FOREIGN KEY (id_rayon) REFERENCES rayons(id_rayon)
 );
 
-INSERT INTO ouvrages (titre, date_publication, id_rayon) VALUES
-('Apprendre SQL',       '2022-01-10', 1),  
-('Algorithmique',       '2019-09-01', 2), 
-('Physique générale',   '2020-04-12', 3),
-('Les Misérables',      '1862-01-01', 4), 
-('Histoire du Maroc',   '2018-06-20', 5),
-('Microéconomie',       '2021-03-11', 6), 
-('Introduction à Kant', '2017-09-05', 7);
+
 
 
 
@@ -48,14 +33,7 @@ CREATE TABLE auteurs (
     prenom VARCHAR(255) NOT NULL
 );
 
-INSERT INTO auteurs (nom, prenom) VALUES
-('Benali', 'Omar'),
-('El Amrani', 'Youssef'),
-('Alaoui', 'Hassan'),
-('Bennani', 'Khadija'),
-('Idrissi', 'Salma'),
-('Fassi', 'Mehdi'),
-('Zerouali', 'Nadia');
+
 
 
 CREATE TABLE lecteurs (
@@ -68,15 +46,6 @@ CREATE TABLE lecteurs (
     
 );
 
-INSERT INTO lecteurs (nom, prenom, telephone, email, CIN) VALUES
-('Benali', 'Omar', '0612345678', 'omar@gmail.com', 'AA111111'),
-('Alaoui', 'Hassan', '0623456789', 'hassan@gmail.com', 'BB222222'),
-('Idrissi', 'Salma', '0634567890', 'salma@gmail.com', 'CC333333'),
-('Bennani', 'Khadija', '0645678901', 'khadija@gmail.com', 'DD444444'),
-('Fassi', 'Mehdi', '0656789012', 'mehdi@gmail.com', 'EE555555'),
-('Zerouali', 'Nadia', '0667890123', 'nadia@gmail.com', 'FF666666'),
-('El Amrani', 'Youssef', '0678901234', 'youssef@gmail.com', 'GG777777');
-
 
 CREATE TABLE auteurs_ouvrages (
     id_auteur INT NOT NULL,
@@ -85,15 +54,7 @@ CREATE TABLE auteurs_ouvrages (
     FOREIGN KEY (id_auteur) REFERENCES auteurs(id_auteur),
     FOREIGN KEY (id_ouvrage) REFERENCES ouvrages(id_ouvrage)
 );
-INSERT INTO auteurs_ouvrages (id_auteur, id_ouvrage) VALUES
-(1, 1),
-(1, 2),
-(2, 1), 
-(3, 3), 
-(4, 4), 
-(5, 5), 
-(6, 6), 
-(7, 7); 
+
 
 
 CREATE TABLE emprunts (
@@ -107,16 +68,7 @@ CREATE TABLE emprunts (
     FOREIGN KEY (id_ouvrage) REFERENCES ouvrages(id_ouvrage)
 );
 
-INSERT INTO emprunts
-(id_lecteur, id_ouvrage, date_emprunt, date_retour_prevu, date_retour_reelle)
-VALUES
-(1, 3, '2024-01-05', '2024-01-15', '2024-01-14'),
-(2, 1, '2024-01-12', '2024-01-22', NULL),
-(3, 5, '2024-02-01', '2024-02-10', '2024-02-09'),
-(4, 2, '2024-02-08', '2024-02-18', NULL),
-(5, 7, '2024-02-20', '2024-03-01', '2024-02-28'),
-(6, 4, '2024-03-05', '2024-03-15', NULL),
-(7, 6, '2024-03-18', '2024-03-28', '2024-03-27');
+
 
 
 CREATE TABLE personnels (
