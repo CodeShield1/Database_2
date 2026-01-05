@@ -119,16 +119,15 @@ VALUES
 (7, 6, '2024-03-18', '2024-03-28', '2024-03-27');
 
 
-CREATE TABLE personnels (
+CREATE TABLE personnel (
     id_personnel INT AUTO_INCREMENT PRIMARY KEY,
-    nom VARCHAR(255) NOT NULL,
-    prenom VARCHAR(255) NOT NULL,
-    telephone VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    FOREIGN KEY (id_personnel) REFERENCES personnels(id_personnel),
-    FOREIGN KEY (id_ouvrage) REFERENCES ouvrages(id_ouvrage)
-    
-)
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(150) UNIQUE,
+    id_chef INT NULL,
+    FOREIGN KEY (id_chef) REFERENCES personnel(id_personnel)
+);
+
 
 
 
